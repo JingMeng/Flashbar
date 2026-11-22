@@ -185,7 +185,7 @@ class FbProgress : View {
     }
 
     public override fun onSaveInstanceState(): Parcelable? {
-        val superState = super.onSaveInstanceState()
+        val superState = super.onSaveInstanceState() ?: View.BaseSavedState.EMPTY_STATE
 
         val ss = WheelSavedState(superState)
 

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 ext {
     bintrayRepo = 'maven'
@@ -27,7 +26,13 @@ ext {
 }
 
 android {
+    namespace 'com.andrognito.flashbar'
     compileSdkVersion project.sdk
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions { jvmTarget = '11' }
 
     defaultConfig {
         minSdkVersion project.minSdk
@@ -45,9 +50,7 @@ android {
 }
 
 dependencies {
-    implementation "com.android.support:appcompat-v7:$project.supportVersion"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
-apply from: 'https://raw.githubusercontent.com/aritraroy/LibUtils/master/install.gradle'
-apply from: 'https://raw.githubusercontent.com/aritraroy/LibUtils/master/upload.gradle'

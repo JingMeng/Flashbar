@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    namespace 'com.andrognito.flashbardemo'
     compileSdkVersion project.sdk
 
     defaultConfig {
@@ -26,3 +27,5 @@ dependencies {
     implementation "com.android.support:appcompat-v7:$project.supportVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
+

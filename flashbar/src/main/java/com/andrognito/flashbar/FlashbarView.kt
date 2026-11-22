@@ -9,7 +9,7 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Build.VERSION.SDK_INT
 import android.os.Build.VERSION_CODES.M
-import android.support.annotation.ColorInt
+import androidx.annotation.ColorInt
 import android.text.Spanned
 import android.text.TextUtils
 import android.util.TypedValue
@@ -31,7 +31,9 @@ import com.andrognito.flashbar.anim.FlashAnimIconBuilder
 import com.andrognito.flashbar.util.convertDpToPx
 import com.andrognito.flashbar.util.getStatusBarHeightInPx
 import com.andrognito.flashbar.view.ShadowView
-import kotlinx.android.synthetic.main.flash_bar_view.view.*
+import android.widget.TextView
+import com.andrognito.flashbar.view.FbButton
+import com.andrognito.flashbar.view.FbProgress
 
 /**
  * The actual Flashbar withView representation that can consist of the title, message, button, icon, etc.
@@ -42,6 +44,17 @@ import kotlinx.android.synthetic.main.flash_bar_view.view.*
  * events and respond as necessary.
  */
 internal class FlashbarView(context: Context) : LinearLayout(context) {
+    private val fbRoot: LinearLayout get() = findViewById(R.id.fbRoot)
+    private val fbContent: LinearLayout get() = findViewById(R.id.fbContent)
+    private val fbLeftProgress: FbProgress get() = findViewById(R.id.fbLeftProgress)
+    private val fbRightProgress: FbProgress get() = findViewById(R.id.fbRightProgress)
+    private val fbIcon: ImageView get() = findViewById(R.id.fbIcon)
+    private val fbTitle: TextView get() = findViewById(R.id.fbTitle)
+    private val fbMessage: TextView get() = findViewById(R.id.fbMessage)
+    private val fbPrimaryAction: FbButton get() = findViewById(R.id.fbPrimaryAction)
+    private val fbPositiveAction: FbButton get() = findViewById(R.id.fbPositiveAction)
+    private val fbNegativeAction: FbButton get() = findViewById(R.id.fbNegativeAction)
+    private val fbSecondaryActionContainer: LinearLayout get() = findViewById(R.id.fbSecondaryActionContainer)
 
     private val TOP_COMPENSATION_MARGIN = resources.getDimension(R.dimen.fb_top_compensation_margin).toInt()
     private val BOTTOM_COMPENSATION_MARGIN = resources.getDimension(R.dimen.fb_bottom_compensation_margin).toInt()
